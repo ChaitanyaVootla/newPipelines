@@ -145,7 +145,7 @@ pipelines:
         group: test_group 
         syntaxVersion: "2018-03-12"
         priority: 9999
-        timeoutMinutes
+        timeoutMinutes: 40
         dependsOn:
           trigger:
             resources:
@@ -157,7 +157,7 @@ pipelines:
         group: test_group 
         syntaxVersion: "2018-03-12"
         priority: 9999
-        timeoutMinutes
+        timeoutMinutes: 40
         dependsOn:
           trigger:
             resources:
