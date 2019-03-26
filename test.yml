@@ -143,6 +143,9 @@ pipelines:
       - name: main_step4
         type: runSh
         group: test_group 
+        syntaxVersion: "2018-03-12"
+        priority: 9999
+        timeoutMinutes
         dependsOn:
           trigger:
             resources:
@@ -152,6 +155,9 @@ pipelines:
       - name: main_step5
         type: runSh
         group: test_group 
+        syntaxVersion: "2018-03-12"
+        priority: 9999
+        timeoutMinutes
         dependsOn:
           trigger:
             resources:
