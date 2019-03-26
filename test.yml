@@ -146,6 +146,9 @@ pipelines:
         syntaxVersion: "2018-03-12"
         priority: 9999
         timeoutMinutes: 40
+        onExecute:
+          - echo "executing task command 1"
+          - echo "executing task command 2"
         dependsOn:
           trigger:
             resources:
@@ -158,6 +161,9 @@ pipelines:
         syntaxVersion: "2018-03-12"
         priority: 9999
         timeoutMinutes: 40
+        onExecute:
+          - echo "executing task command 1"
+          - echo "executing task command 2"
         dependsOn:
           trigger:
             resources:
