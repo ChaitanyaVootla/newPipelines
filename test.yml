@@ -140,3 +140,21 @@ pipelines:
           - echo "Cleaning up some stuff"
         onCancel:
           - echo "Someone cancelled the job"
+      - name: main_step4
+        type: runSh
+        group: test_group 
+        dependsOn:
+          trigger:
+            resources:
+              - sample_java_repo_test
+            steps:
+              - main_step3
+      - name: main_step5
+        type: runSh
+        group: test_group 
+        dependsOn:
+          trigger:
+            resources:
+              - sample_java_repo_test
+            steps:
+              - main_step4
