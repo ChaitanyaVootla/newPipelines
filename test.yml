@@ -1,7 +1,7 @@
 resources:
    - name: sample_java_repo_test
      type: gitRepo
-     integrationName: github-subint
+     integrationName: git
      repoPath: ChaitanyaVootla/newPipelines
      configuration:
         branches:
