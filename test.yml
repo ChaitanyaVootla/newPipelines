@@ -2,7 +2,7 @@ resources:
    - name: sample_java_repo_test
      type: gitRepo
      integrationName: github-subint
-     repoPath: ChaitanyaVootla/newPipelines
+     repoPath: ChaitanyaVootla/miniPipeline
      configuration:
         branches:
            except: "*test"
@@ -207,6 +207,7 @@ pipelines:
               - sample_java_repo_test
             steps:
               - main_step4
+              - in_trigger_step2
         onStart:
           - echo "Prepping build environment"
         onExecute:
