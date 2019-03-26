@@ -2,7 +2,7 @@ resources:
    - name: sample_java_repo_test
      type: gitRepo
      integrationName: github-subint
-     repoPath: ChaitanyaVootla/miniPipeline
+     repoPath: ankul-shippable/sample_java
      configuration:
         branches:
            except: "*test"
@@ -42,7 +42,23 @@ pipelines:
           - echo "executing task command 1"
           - echo "executing task command 2"
 
-      - name: main_step2
+      - name: in_trigger_step_2
+        type: runSh
+        group: test_group
+        setup:
+          environmentVariables:
+            normal:
+              - ENV1: value1
+              - ENV2: value2
+            encrypted:
+              - SECURE_ENV1: test_value
+              - SECURE_ENV2: test_value
+          runtime: onHost
+        onExecute:
+          - echo "executing task command 1"
+          - echo "executing task command 2"
+
+      - name: main_step
         type: runSh
         group: test_group 
         syntaxVersion: "2018-03-12"
@@ -69,145 +85,7 @@ pipelines:
               - sample_java_repo_test
             steps:
               - in_trigger_step
-        onStart:
-          - echo "Prepping build environment"
-        onExecute:
-          - echo "executing task command 1"
-          - echo "executing task command 2"
-        onSuccess:
-          - echo "Job well done!"
-        onFailure:
-          - echo "uh oh, something went wrong"
-        onComplete:
-          - echo "Cleaning up some stuff"
-        onCancel:
-          - echo "Someone cancelled the job"
-  - name: test_pipeline_2
-    steps:
-      - name: in_trigger_step2
-        type: runSh
-        group: test_group
-        setup:
-          environmentVariables:
-            normal:
-              - ENV1: value1
-              - ENV2: value2
-            encrypted:
-              - SECURE_ENV1: test_value
-              - SECURE_ENV2: test_value
-          runtime: onHost
-        onExecute:
-          - echo "executing task command 1"
-          - echo "executing task command 2"
-
-      - name: main_step3
-        type: runSh
-        group: test_group 
-        syntaxVersion: "2018-03-12"
-        priority: 9999
-        timeoutMinutes: 40
-        cache: true
-        setup:
-          environmentVariables:
-            normal:
-              - ENV1: value1
-              - ENV2: value2
-            encrypted:
-              - SECURE_ENV1: test_value
-              - SECURE_ENV2: test_value
-          runtime: onHost
-        dependsOn:
-          passive:
-            # steps:
-            #   - passive_step
-            integrations:
-              - github-subint
-          trigger:
-            resources:
-              - sample_java_repo_test
-            steps:
-              - in_trigger_step2
-        onStart:
-          - echo "Prepping build environment"
-        onExecute:
-          - echo "executing task command 1"
-          - echo "executing task command 2"
-        onSuccess:
-          - echo "Job well done!"
-        onFailure:
-          - echo "uh oh, something went wrong"
-        onComplete:
-          - echo "Cleaning up some stuff"
-        onCancel:
-          - echo "Someone cancelled the job"
-      - name: main_step4
-        type: runSh
-        group: test_group 
-        syntaxVersion: "2018-03-12"
-        priority: 9999
-        timeoutMinutes: 40
-        cache: true
-        setup:
-          environmentVariables:
-            normal:
-              - ENV1: value1
-              - ENV2: value2
-            encrypted:
-              - SECURE_ENV1: test_value
-              - SECURE_ENV2: test_value
-          runtime: onHost
-        dependsOn:
-          passive:
-            # steps:
-            #   - passive_step
-            integrations:
-              - github-subint
-          trigger:
-            resources:
-              - sample_java_repo_test
-            steps:
-              - main_step3
-        onStart:
-          - echo "Prepping build environment"
-        onExecute:
-          - echo "executing task command 1"
-          - echo "executing task command 2"
-        onSuccess:
-          - echo "Job well done!"
-        onFailure:
-          - echo "uh oh, something went wrong"
-        onComplete:
-          - echo "Cleaning up some stuff"
-        onCancel:
-          - echo "Someone cancelled the job"
-      - name: main_step5
-        type: runSh
-        group: test_group 
-        syntaxVersion: "2018-03-12"
-        priority: 9999
-        timeoutMinutes: 40
-        cache: true
-        setup:
-          environmentVariables:
-            normal:
-              - ENV1: value1
-              - ENV2: value2
-            encrypted:
-              - SECURE_ENV1: test_value
-              - SECURE_ENV2: test_value
-          runtime: onHost
-        dependsOn:
-          passive:
-            # steps:
-            #   - passive_step
-            integrations:
-              - github-subint
-          trigger:
-            resources:
-              - sample_java_repo_test
-            steps:
-              - main_step4
-              - in_trigger_step2
+              - in_trigger_step_2
         onStart:
           - echo "Prepping build environment"
         onExecute:
