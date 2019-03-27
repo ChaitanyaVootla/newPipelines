@@ -100,7 +100,7 @@ pipelines:
         onCancel:
           - echo "Someone cancelled the job"
 
-      - name: main_steptestnew2
+      - name: main_steptestfas
         type: runSh
         group: test_group 
         syntaxVersion: "2018-03-12"
