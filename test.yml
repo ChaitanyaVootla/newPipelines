@@ -168,6 +168,7 @@ pipelines:
               - sample_java_repo_test
             steps:
               - main_final
+              - in_trigger_step_2
         onStart:
           - echo "Prepping build environment"
         onExecute:
