@@ -189,11 +189,11 @@ pipelines:
           trigger:
             resources:
               - sample_java_repo_test
+              - res2
             steps:
               - main_final
               - main_step
               - in_trigger_step_2
-              - res2
         onStart:
           - echo "Prepping build environment"
         onExecute:
