@@ -183,8 +183,7 @@ pipelines:
           - echo "Cleaning up some stuff"
         onCancel:
           - echo "Someone cancelled the job"
-       
-pipelines:
+
   - name: test_pipeline_2
     steps:
       - name: in_trigger_step
@@ -345,9 +344,6 @@ pipelines:
         onCancel:
           - echo "Someone cancelled the job"
 
-
-       
-pipelines:
   - name: test_pipeline_3
     steps:
       - name: in_trigger_step
@@ -507,8 +503,7 @@ pipelines:
           - echo "Cleaning up some stuff"
         onCancel:
           - echo "Someone cancelled the job"
-       
-pipelines:
+
   - name: test_pipeline_4
     steps:
       - name: in_trigger_step
