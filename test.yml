@@ -22,6 +22,29 @@ resources:
           - dont_know_2
      initialVersion:
        sha: master
+   - name: res2
+     type: gitRepo
+     integrationName: git
+     repoPath: ChaitanyaVootla/newPipelines
+     configuration:
+        branches:
+           except: "*test"
+           only: "master*"
+        tags:
+           except: none
+           only: none   
+        buildOnCommit: true
+        buildOnPullRequest: false
+        buildOnPullRequestClose: false
+        buildOnRelease: true
+        buildOnTagPush: false
+        buildOnFileCommit: "*test"
+        shallowDepth: 2
+        gitConfig: 
+          - dont_know
+          - dont_know_2
+     initialVersion:
+       sha: master
        
 pipelines:
   - name: test_pipeline_1
@@ -170,6 +193,7 @@ pipelines:
               - main_final
               - main_step
               - in_trigger_step_2
+              - res2
         onStart:
           - echo "Prepping build environment"
         onExecute:
