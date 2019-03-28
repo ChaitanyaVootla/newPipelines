@@ -214,6 +214,7 @@ pipelines:
               - SECURE_ENV2: test_value
           runtime: onHost
         dependsOn:
+          trigger:
             steps:
               - test11
         onExecute:
