@@ -183,7 +183,7 @@ pipelines:
           - echo "Cleaning up some stuff"
         onCancel:
           - echo "Someone cancelled the job"
-  - name: test_pipeline_1
+  - name: test_pipeline_2
     steps:
       - name: test11
         type: runSh
